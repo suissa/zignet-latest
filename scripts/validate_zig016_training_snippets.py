@@ -5,7 +5,7 @@ import argparse, json, re, subprocess, sys, tempfile
 from pathlib import Path
 from typing import Any
 
-FENCE_RE = re.compile(r"\`\`\`(?:zig)?[ \t]*\r?\n(.*?)\`\`\`", re.DOTALL | re.IGNORECASE)
+FENCE_RE = re.compile(r"`{3}(?:zig)?[ \t]*\r?\n(.*?)`{3}", re.DOTALL | re.IGNORECASE)
 TARGET_LABEL_RE = re.compile(r"Alvo\s+0\.16\.0\s*:", re.IGNORECASE)
 
 def is_executable_zig(source: str) -> bool:
