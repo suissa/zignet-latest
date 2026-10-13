@@ -211,7 +211,7 @@ def main() -> int:
         print(f"\nReport written: {args.report}")
 
     if args.audit_only:
-        return 0 if records and not any(issue["kind"] in {"invalid_json", "missing_fields", "invalid_record", "invalid_metadata", "invalid_text_fields"} for issue in issues) else 2
+        return 0 if records and not any(issue["kind"] in {"invalid_json", "missing_fields", "invalid_record", "invalid_metadata", "invalid_text_fields", "empty_text"} for issue in issues) else 2
     return 0 if ready else 2
 
 
