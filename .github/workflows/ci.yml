@@ -167,3 +167,22 @@ jobs:
                   tags: zignet:test
                   cache-from: type=gha
                   cache-to: type=gha,mode=max
+
+    test-zig-training-audit:
+        name: Test Zig training dataset audit
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: '3.11'
+
+            - name: Test dataset audit gate
+              run: python tests/test_audit_zig_training_dataset.py
+
+            - name: Audit current seed dataset structure
+              run: python scripts/audit_zig_training_dataset.py --audit-only --report /tmp/zignet-dataset-audit.json
