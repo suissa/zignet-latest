@@ -17,3 +17,17 @@ All records are explicitly marked `compiler_validated: false` and `validation_st
 Compile legacy examples with a pinned Zig 0.15.x compiler and target examples with Zig 0.16.0; run `zig fmt`, tests/builds, schema validation, semantic deduplication, leakage checks, and human review. Split by scenario family before augmentation. Use actual package fingerprints and verify all 0.16 API signatures from the standard library/release notes.
 
 Official source: https://ziglang.org/download/0.16.0/release-notes.html
+
+## Dataset audit
+
+From the repository root, run:
+
+```bash
+python scripts/audit_zig_training_dataset.py --report /tmp/zignet-dataset-audit.json
+python -m unittest tests/test_audit_zig_training_dataset.py
+```
+
+The audit checks JSONL schema, empty fields, known scaffolding/placeholders, duplicate examples, provenance, and recorded compiler-validation evidence. It exits with code 2 when the dataset is not training-ready. Use `--audit-only` only to inspect structural problems without treating the dataset as eligible for training.
+
+**Important:** the audit script does not run Zig. Set `compiler_validated: true` only after a real Zig 0.16.0 validation run, and preserve the compiler version, command, successful result, and source URL in each record's metadata. The Colab notebook enforces this evidence gate before loading the model.
+
