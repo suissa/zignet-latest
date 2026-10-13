@@ -24,7 +24,7 @@ From the repository root, run:
 
 ```bash
 python scripts/audit_zig_training_dataset.py --report /tmp/zignet-dataset-audit.json
-python -m unittest tests/test_audit_zig_training_dataset.py
+python tests/test_audit_zig_training_dataset.py
 ```
 
 The audit checks JSONL schema, empty fields, known scaffolding/placeholders, duplicate examples, provenance, and recorded compiler-validation evidence. It exits with code 2 when the dataset is not training-ready. Use `--audit-only` only to inspect structural problems without treating the dataset as eligible for training.
