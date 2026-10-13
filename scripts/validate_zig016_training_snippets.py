@@ -79,7 +79,7 @@ def main() -> int:
             with tempfile.TemporaryDirectory(prefix="zignet-zig016-") as tmp:
                 source_path = Path(tmp) / f"snippet-{index}.zig"
                 source_path.write_text(source, encoding="utf-8")
-                command = ["zig", "test", str(source_path), "--color", "off"]
+                command = ["zig", "test", "--color", "off", str(source_path)]
                 run = subprocess.run(command, capture_output=True, text=True, check=False)
                 item.update({
                     "command": "zig test <snippet> --color off",
