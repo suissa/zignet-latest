@@ -1,0 +1,71 @@
+name: Zig 0.16.0 training snippet validation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "data/training/v0.16.0/**"
+      - "scripts/validate_zig016_training_snippets.py"
+      - ".github/workflows/zig-016-snippets.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "data/training/v0.16.0/**"
+      - "scripts/validate_zig016_training_snippets.py"
+      - ".github/workflows/zig-016-snippets.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: zig-016-snippets-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-training-snippets:
+    name: Compile every Zig 0.16.0 target snippet
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Zig 0.16.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARCHIVE="zig-x86_64-linux-0.16.0.tar.xz"
+          URL="https://ziglang.org/download/0.16.0/${ARCHIVE}"
+          curl --fail --location --retry 3 --retry-delay 2 "${URL}" --output "/tmp/${ARCHIVE}"
+          mkdir -p "$HOME/.local/zig-0.16.0"
+          tar -xJf "/tmp/${ARCHIVE}" -C "$HOME/.local/zig-0.16.0" --strip-components=1
+          echo "$HOME/.local/zig-0.16.0" >> "$GITHUB_PATH"
+          "$HOME/.local/zig-0.16.0/zig" version
+
+      - name: Compile target snippets from every JSONL category
+        id: validate
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_zig016_training_snippets.py \
+            --zig-version 0.16.0 \
+            --data-dir data/training/v0.16.0 \
+            --report zig-016-snippet-validation-report.json 2>&1 | tee zig-016-snippet-validation.log
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zig-016-snippet-validation-report
+          path: |
+            zig-016-snippet-validation-report.json
+            zig-016-snippet-validation.log
+          if-no-files-found: warn
+          retention-days: 14
