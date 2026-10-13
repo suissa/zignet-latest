@@ -14,6 +14,7 @@ from typing import Any
 FENCE_RE = re.compile(r"`{3}(?:zig)?[ \t]*\r?\n(.*?)`{3}", re.DOTALL | re.IGNORECASE)
 TARGET_LABEL_RE = re.compile(
     r"(?:Alvo(?:/migração)?\s*(?:\(\s*0\.16\.0\s*\)|0\.16\.0)|"
+    r"Alvo\s+ilustrativo|"
     r"Migração(?:\s+para)?\s*\(\s*0\.16\.0\s*\))\s*:",
     re.IGNORECASE,
 )
