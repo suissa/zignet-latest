@@ -1,4 +1,4 @@
-name: Zig 0.16.0 training snippet validation
+name: Zig 0.16.0 representative training snippet validation
 
 on:
   push:
@@ -24,7 +24,7 @@ concurrency:
 
 jobs:
   validate-training-snippets:
-    name: Compile every Zig 0.16.0 target snippet
+    name: Compile one representative per migration category
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -48,7 +48,7 @@ jobs:
           echo "$HOME/.local/zig-0.16.0" >> "$GITHUB_PATH"
           "$HOME/.local/zig-0.16.0/zig" version
 
-      - name: Compile target snippets from every JSONL category
+      - name: Compile one target snippet from each JSONL category
         id: validate
         shell: bash
         run: |
