@@ -1,26 +1,19 @@
-# ZigNet Zig 0.16.0 training data
+# ZigNet Zig 0.16.0 migration seed dataset
 
-This directory is the target for synthetic examples generated under `skills/zignet-016-synthetic-data/SKILL.md`. The directory did not previously exist at the time this README was authored; existing files in `data/training/` remain untouched.
+This directory contains **50 seed records for each change category** in the Zig 0.15.x → 0.16.0 migration catalog. The files preserve `instruction`, `input`, `output` and provenance/quality metadata.
 
-## Expected files
+## Important validation status
 
-- `dataset-train.jsonl`
-- `dataset-validation.jsonl`
-- `dataset-test.jsonl`
-- `dataset-stats.json`
-- `manifest.json`
-- optional `validation/` compiler logs
+All records are explicitly marked `compiler_validated: false` and `validation_status: "snippet_only"`. They are not yet suitable for direct fine-tuning. Some are scaffolds that must be replaced with precise API examples and standalone harnesses. Do not report these as compiler-verified examples.
 
-Each JSONL record should preserve the existing `instruction`, `input`, `output` fields and add structured `metadata` for provenance and quality gates.
+## Files and counts
 
-## Scope
+- One JSONL file per migration category, 50 records each.
+- `manifest.json`: coverage, sources, limitations and validation policy.
+- `dataset-stats.json`: counts and validation status.
 
-Only teach verified Zig 0.16.0 changes relative to the closest applicable 0.15.x behavior. Record the exact old compiler version when an old-code sample is compiled. Never label unrun examples as compiler-validated.
+## Required next step
 
-## Split policy
+Compile legacy examples with a pinned Zig 0.15.x compiler and target examples with Zig 0.16.0; run `zig fmt`, tests/builds, schema validation, semantic deduplication, leakage checks, and human review. Split by scenario family before augmentation. Use actual package fingerprints and verify all 0.16 API signatures from the standard library/release notes.
 
-Split by scenario/template family before augmentation to prevent near-identical examples leaking between train, validation and test. Suggested initial split: 80/10/10. For a tiny corpus, keep a manually curated test set that is never used to tune generation prompts.
-
-## Do not assume files already exist
-
-The initial directory may contain only this README. The Colab notebook validates the paths and reports counts before training. It must not silently substitute the existing 0.13–0.15 dataset for missing 0.16 data.
+Official source: https://ziglang.org/download/0.16.0/release-notes.html
