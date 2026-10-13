@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "zig-0.15.x-to-0.16.0-seed-v1",
+  "generated_at": "2026-10-13",
+  "baseline": "0.15.x",
+  "target": "0.16.0",
+  "change_count": 25,
+  "examples_per_change": 50,
+  "total_examples": 1250,
+  "compiler_validated": 0,
+  "snippet_only": 1250,
+  "source_of_truth": "https://ziglang.org/download/0.16.0/release-notes.html",
+  "status": "seed dataset; not ready for fine-tuning until compiler validation and human review",
+  "validation_policy": "No record claims compiler validation. Confirm each old snippet with a pinned 0.15.x compiler and each target with pinned Zig 0.16.0; correct API signatures, build standalone harnesses, run zig fmt/tests/schema/duplicate/leakage checks, then split by scenario family.",
+  "files": [
+    {
+      "change_id": "backend-toolchain",
+      "file": "backend-toolchain.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/backend-toolchain.jsonl"
+    },
+    {
+      "change_id": "bitset-enumset-literals",
+      "file": "bitset-enumset-literals.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/bitset-enumset-literals.jsonl"
+    },
+    {
+      "change_id": "c-import-translation",
+      "file": "c-import-translation.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/c-import-translation.jsonl"
+    },
+    {
+      "change_id": "canonical-package-cache",
+      "file": "canonical-package-cache.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/canonical-package-cache.jsonl"
+    },
+    {
+      "change_id": "cli-error-formatting",
+      "file": "cli-error-formatting.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/cli-error-formatting.jsonl"
+    },
+    {
+      "change_id": "debug-stack-traces",
+      "file": "debug-stack-traces.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/debug-stack-traces.jsonl"
+    },
+    {
+      "change_id": "elf-linker",
+      "file": "elf-linker.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/elf-linker.jsonl"
+    },
+    {
+      "change_id": "explicit-extern-backing",
+      "file": "explicit-extern-backing.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/explicit-extern-backing.jsonl"
+    },
+    {
+      "change_id": "incremental-compilation",
+      "file": "incremental-compilation.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/incremental-compilation.jsonl"
+    },
+    {
+      "change_id": "io-concurrency-primitives",
+      "file": "io-concurrency-primitives.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/io-concurrency-primitives.jsonl"
+    },
+    {
+      "change_id": "io-explicit-instance",
+      "file": "io-explicit-instance.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/io-explicit-instance.jsonl"
+    },
+    {
+      "change_id": "juicy-main-init",
+      "file": "juicy-main-init.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/juicy-main-init.jsonl"
+    },
+    {
+      "change_id": "libc-toolchain-headers",
+      "file": "libc-toolchain-headers.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/libc-toolchain-headers.jsonl"
+    },
+    {
+      "change_id": "math-sign-return-type",
+      "file": "math-sign-return-type.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/math-sign-return-type.jsonl"
+    },
+    {
+      "change_id": "package-metadata",
+      "file": "package-metadata.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/package-metadata.jsonl"
+    },
+    {
+      "change_id": "packed-union-backing-int",
+      "file": "packed-union-backing-int.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/packed-union-backing-int.jsonl"
+    },
+    {
+      "change_id": "packed-union-equality",
+      "file": "packed-union-equality.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/packed-union-equality.jsonl"
+    },
+    {
+      "change_id": "remove-ucontext",
+      "file": "remove-ucontext.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/remove-ucontext.jsonl"
+    },
+    {
+      "change_id": "switch-prongs",
+      "file": "switch-prongs.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/switch-prongs.jsonl"
+    },
+    {
+      "change_id": "tar-extract-path-traversal",
+      "file": "tar-extract-path-traversal.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/tar-extract-path-traversal.jsonl"
+    },
+    {
+      "change_id": "target-platforms",
+      "file": "target-platforms.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/target-platforms.jsonl"
+    },
+    {
+      "change_id": "type-construction-builtins",
+      "file": "type-construction-builtins.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/type-construction-builtins.jsonl"
+    },
+    {
+      "change_id": "type-resolution",
+      "file": "type-resolution.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/type-resolution.jsonl"
+    },
+    {
+      "change_id": "windows-root-certs",
+      "file": "windows-root-certs.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/windows-root-certs.jsonl"
+    },
+    {
+      "change_id": "zero-bit-tuple-fields",
+      "file": "zero-bit-tuple-fields.jsonl",
+      "count": 50,
+      "github_blob": "https://github.com/suissa/zignet-latest/blob/main/data/training/v0.16.0/zero-bit-tuple-fields.jsonl"
+    }
+  ],
+  "limitations": [
+    "Records are seed prompts and not all are semantically distinct enough for final training.",
+    "Several entries are migration scaffolds rather than standalone compilable examples.",
+    "Some Zig 0.16 APIs require exact signatures from the target standard library.",
+    "Target/platform/toolchain changes use command/configuration examples, not only Zig source.",
+    "Package fingerprint value in package-metadata examples is illustrative and must be replaced with the real value."
+  ]
+}
