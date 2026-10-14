@@ -20,7 +20,7 @@ on:
       offset:
         description: "Number of JSONL records to skip (next batch starts at 10, then 20, etc.)"
         required: true
-        default: "10"
+        default: "20"
         type: string
       limit:
         description: "Records to compile; use 10 for the next batch"
@@ -74,7 +74,7 @@ jobs:
         shell: bash
         env:
           EVENT_NAME: ${{ github.event_name }}
-          INPUT_OFFSET: ${{ inputs.offset || '10' }}
+          INPUT_OFFSET: ${{ inputs.offset || '20' }}
           INPUT_LIMIT: ${{ inputs.limit || '10' }}
         run: |
           set -o pipefail
