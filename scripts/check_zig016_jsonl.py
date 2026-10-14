@@ -60,7 +60,16 @@ def load_records(data_dir: Path) -> list[dict[str, Any]]:
                     "source": source,
                     "error": error,
                 })
-    return records
+    unique_records: list[dict[str, Any]] = []
+    seen_sources: set[str] = set()
+    for record in records:
+        source = record.get("source")
+        if source:
+            if source in seen_sources:
+                continue
+            seen_sources.add(source)
+        unique_records.append(record)
+    return unique_records
 
 
 def main() -> int:
