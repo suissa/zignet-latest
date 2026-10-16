@@ -13,6 +13,7 @@ RUN apk add --no-cache \
     g++ \
     cmake \
     git \
+    linux-headers \
     curl \
     tar \
     xz
