@@ -19,7 +19,7 @@ RUN apk add --no-cache \
 COPY package.json pnpm-lock.yaml ./
 
 # Install pnpm
-RUN npm install -g pnpm
+RUN npm install -g pnpm@10.33.0
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
@@ -48,7 +48,7 @@ COPY --from=builder /app/pnpm-lock.yaml ./
 COPY --from=builder /app/scripts/install-zig.js ./scripts/
 
 # Install pnpm
-RUN npm install -g pnpm
+RUN npm install -g pnpm@10.33.0
 
 # Install production dependencies only
 RUN pnpm install --prod --frozen-lockfile
