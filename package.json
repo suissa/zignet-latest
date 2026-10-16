@@ -157,5 +157,11 @@
         "typescript": "^5.9.3",
         "typescript-eslint": "^8.46.2",
         "vitest": "^4.0.3"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild",
+            "node-llama-cpp"
+        ]
     }
 }
