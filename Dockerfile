@@ -30,8 +30,9 @@ RUN pnpm install --frozen-lockfile
 # Copy source code
 COPY . .
 
-# Build TypeScript
+# Build TypeScript and prune development-only dependencies before packaging
 RUN pnpm run build
+RUN pnpm prune --prod
 
 # Stage 2: Runtime
 FROM node:20-alpine
@@ -40,10 +41,6 @@ WORKDIR /app
 
 # Install runtime dependencies
 RUN apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    cmake \
     curl \
     tar \
     xz
@@ -52,13 +49,8 @@ RUN apk add --no-cache \
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/pnpm-lock.yaml ./
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/scripts/install-zig.js ./scripts/
-
-# Install pnpm
-RUN npm install -g pnpm@10.33.0
-
-# Install production dependencies only
-RUN pnpm install --prod --frozen-lockfile
 
 # Create Zig cache directory
 RUN mkdir -p /root/.zignet/zig-versions
