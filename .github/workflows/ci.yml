@@ -77,6 +77,11 @@ jobs:
             matrix:
                 os: [ubuntu-latest, macos-latest]
                 zig-version: ['0.13.0', '0.14.0', '0.15.2']
+                exclude:
+                    # Zig 0.13.0's formatter fails on current macOS arm64 runners
+                    # with undefined libc symbols; this is a toolchain/runner incompatibility.
+                    - os: macos-latest
+                      zig-version: '0.13.0'
 
         steps:
             - name: Checkout code
