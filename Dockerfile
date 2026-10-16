@@ -11,6 +11,7 @@ RUN apk add --no-cache \
     python3 \
     make \
     g++ \
+    cmake \
     curl \
     tar \
     xz
@@ -37,6 +38,10 @@ WORKDIR /app
 
 # Install runtime dependencies
 RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    cmake \
     curl \
     tar \
     xz
